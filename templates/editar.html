@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Editar Evento</title>
+</head>
+<body>
+    <h1>Editar Evento</h1>
+    <form method="post">
+        <input name="nome" value="{{ evento.nome }}" required>
+        <input name="data" value="{{ evento.data }}" required>
+        <input name="local" value="{{ evento.local }}">
+        <input name="vagas" type="number" value="{{ evento.vagas }}">
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+</html>

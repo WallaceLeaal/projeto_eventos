@@ -1,6 +1,9 @@
 from flask import Flask
 from extensions import db
 from controllers.evento_controller import evento_bp
+from models.evento import Evento
+from models.participante import Participante
+from models.inscricao import Inscricao
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///eventos.db"

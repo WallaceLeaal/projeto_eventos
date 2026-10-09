@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect
 from models.evento import Evento
-from dao.evento_dao import EventoDAO
+from data.evento_dao import EventoDAO
 
 evento_bp = Blueprint("evento", __name__)
 

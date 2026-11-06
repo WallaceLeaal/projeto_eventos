@@ -1,30 +1,70 @@
+
 <!doctype html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos Acadêmicos</title>
 </head>
 <body>
+
     <h1>Eventos Acadêmicos</h1>
 
-<form id="formEvento" method="post">
-    <input id="nome" name="nome" placeholder="Nome" required>
-    <input id="data" name="data" placeholder="Data (AAAA-MM-DD)" required>
-    <input id="local" name="local" placeholder="Local">
-    <input id="vagas" name="vagas" type="number" placeholder="Vagas">
-    <button type="submit">Cadastrar</button>
-</form>
+    <h2>Cadastrar evento</h2>
+
+    <form id="formEvento" method="post">
+        <input
+            id="nome"
+            name="nome"
+            placeholder="Nome"
+            required
+        >
+
+        <input
+            id="data"
+            name="data"
+            type="date"
+    required
+>
+
+        <input
+            id="local"
+            name="local"
+            placeholder="Local"
+        >
+
+        <input
+            id="vagas"
+            name="vagas"
+            type="number"
+            min="0"
+            placeholder="Vagas"
+        >
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <p id="avisoEvento" role="status" aria-live="polite"></p>
+
+    <h2>Eventos cadastrados</h2>
+
+    <button type="button" id="atualizarEventos">
+        Atualizar lista
+    </button>
 
     <ul id="listaEventos">
         {% for e in eventos %}
             <li>
-                {{ e.nome }} — {{ e.data }} — {{ e.local }} ({{ e.vagas }} vagas)
+                {{ e.nome }} — {{ e.data }} —
+                {{ e.local }} ({{ e.vagas }} vagas)
+
                 <a href="/editar/{{ e.id }}">editar</a>
                 <a href="/excluir/{{ e.id }}">excluir</a>
             </li>
         {% endfor %}
     </ul>
-    
+
     <script src="{{ url_for('static', filename='eventos.js') }}"></script>
+
 </body>
 </html>

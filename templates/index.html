@@ -7,15 +7,15 @@
 <body>
     <h1>Eventos Acadêmicos</h1>
 
-    <form method="post">
-        <input name="nome" placeholder="Nome" required>
-        <input name="data" placeholder="Data (AAAA-MM-DD)" required>
-        <input name="local" placeholder="Local">
-        <input name="vagas" type="number" placeholder="Vagas">
-        <button type="submit">Cadastrar</button>
-    </form>
+<form id="formEvento" method="post">
+    <input id="nome" name="nome" placeholder="Nome" required>
+    <input id="data" name="data" placeholder="Data (AAAA-MM-DD)" required>
+    <input id="local" name="local" placeholder="Local">
+    <input id="vagas" name="vagas" type="number" placeholder="Vagas">
+    <button type="submit">Cadastrar</button>
+</form>
 
-    <ul>
+    <ul id="listaEventos">
         {% for e in eventos %}
             <li>
                 {{ e.nome }} — {{ e.data }} — {{ e.local }} ({{ e.vagas }} vagas)
@@ -24,5 +24,7 @@
             </li>
         {% endfor %}
     </ul>
+    
+    <script src="{{ url_for('static', filename='eventos.js') }}"></script>
 </body>
 </html>

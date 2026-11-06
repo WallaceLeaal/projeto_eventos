@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect, jsonify
 from models.evento import Evento
 from data.evento_dao import EventoDAO
 
@@ -39,3 +39,9 @@ def excluir(id_evento):
     if evento:
         EventoDAO.remover(evento)
     return redirect("/")
+
+@evento_bp.route("/api/eventos", methods=["GET"])
+def listar_eventos_api():
+    eventos = EventoDAO.listar()
+    lista = [evento.para_dicionario() for evento in eventos]
+    return jsonify(lista)
